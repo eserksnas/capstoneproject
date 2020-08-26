@@ -4,8 +4,8 @@ docker build . --tag=es_capstone_project
 
 # Step 2: 
 # List docker images
-# docker image ls
+docker image ls
 
 # Step 3: 
-# Run flask app
-# docker run -p 8000:80 es_project4_api
+# Run the docker container locally
+docker run -p 8000:80 es_capstone_project
