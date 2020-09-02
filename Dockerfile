@@ -1,4 +1,4 @@
-FROM nginx:latest
+FROM nginx:stable-alpine
 COPY index.html /usr/share/nginx/index.html
 
 ## Step 1:
