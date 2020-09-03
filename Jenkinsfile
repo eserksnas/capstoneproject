@@ -26,5 +26,16 @@ pipeline{
                     }
             }
         }
+                stage('EKS Deployment'){
+            steps{
+                    withAWS(credentials: 'AWS_Credentials', region: 'us-east-1') {
+                              sh '''
+                                aws eks --region us-east-1 update-kubeconfig --name capstonecluster2
+                                kubectl config use-context arn:aws:eks:us-east-1:378329487297:cluster/capstonecluster2
+                                kubectl apply -f deploytest.yml
+                              '''
+                    }
+            }
+        }
     }
 }
