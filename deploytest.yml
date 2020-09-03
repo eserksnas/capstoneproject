@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: escapstoneproject
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    run: escapstoneproject
+  type: LoadBalancer
+status:
+  loadBalancer: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: escapstoneproject
+  name: escapstoneproject
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      run: escapstoneproject
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        run: escapstoneproject
+    spec:
+      containers:
+      - image: 378329487297.dkr.ecr.us-east-1.amazonaws.com/capstoneproject:latest
+        name: escapstoneproject
+        ports:
+        - containerPort: 80
