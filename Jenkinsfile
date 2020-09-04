@@ -34,6 +34,7 @@ pipeline{
                                 kubectl config get-contexts
                                 kubectl config use-context arn:aws:eks:us-east-1:378329487297:cluster/capstonecluster2
                                 kubectl apply -f deploytest.yml
+                                kubectl rollout restart deployment escapstoneproject
                               '''
                     }
             }
